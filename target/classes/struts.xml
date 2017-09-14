@@ -50,7 +50,6 @@
 <param name="actionName">videoList</param>
 </result>
 </action>
-
 <action name="videoList" class="BackAction" method="videoList">
 <result name="success">/WEB-INF/back/video/radioList.jsp</result>
 </action>
