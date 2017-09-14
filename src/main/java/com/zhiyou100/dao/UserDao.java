@@ -21,4 +21,14 @@ public interface UserDao {
 
 	void addUser(String email, String pwd);
 
+	void addMailMsg(String email,String mail1);
+
+	List<User> findEmailbox(String email);
+
+	List<User> findCaptcha(String email, String captcha);
+
+	void updatePwd(String email, String password);
+
+	void editUser(User user);
+
 }

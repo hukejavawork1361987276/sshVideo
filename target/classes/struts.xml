@@ -18,19 +18,56 @@
 	<action name="index1" class="FrontAction" method="index1">
 	<result name="success">/WEB-INF/front/index.jsp</result>
 	</action>
-	
+	<!--front页面共享课程  -->
 	<action name="index" class="FrontAction" method="index">
-	<result name="success">/WEB-INF/front/course/index.jsp</result>
+		<result name="success">/WEB-INF/front/course/index.jsp</result>
 	</action>
 	<!-- 退出 -->
 	<action name="exit" class="FrontAction" method="exit">
-	<result  type="redirectAction">
-	<param name="namespace">/front/user</param>
-	<param name="actionName">index1</param>
-	</result>
+		<result  type="redirectAction">
+		<param name="namespace">/front/user</param>
+		<param name="actionName">index1</param>
+		</result>
 	</action>
-
-
+	<!--忘记密码  /front/user/forgetpwdPage-->
+	<action name="forgetpwdPage" class="FrontAction" method="forgetpwdPage">
+		<result name="success">
+		/WEB-INF/front/user/forget_pwd.jsp
+		</result>
+	</action>
+	<!-- 重置页码页面 -->
+	<action name="forgetpwd" class="FrontAction" method="forgetpwd">
+		<result name="success">
+		/WEB-INF/front/user/reset_pwd.jsp
+		</result>
+		<result name="false">
+		/WEB-INF/front/user/forget_pwd.jsp</result>
+	</action>
+	<!-- 重置页码sub -->
+	<action name="resetpwd" class="FrontAction" method="resetpwd">
+		<result name="success">
+		/WEB-INF/front/index.jsp
+		</result>
+		<result name="false">
+		/WEB-INF/front/user/reset_pwd.jsp
+		</result>
+	</action>
+	<action name="message" class="FrontAction" method="message">
+		<result name="success">
+		/WEB-INF/front/user/index.jsp
+		</result>
+	</action>
+	<action name="profile" class="FrontAction" method="profile">
+		<result name="success">
+		/WEB-INF/front/user/profile.jsp
+		</result>
+	</action>
+	<!-- 更改个人信息sub -->
+	<action name="profileSub" class="FrontAction" method="profileSub">
+		<result name="success">
+		/WEB-INF/front/user/index.jsp
+		</result>
+	</action>
 </package>
 <!--ajax  -->
  <package name="ajax" namespace="/ajax/user" extends="json-default">
@@ -42,6 +79,12 @@
 	</action>
 	<!-- 前台注册ajax -->
 	<action name="regist" class="FrontAction" method="regist">
+				<result type="json">
+				 <param name="root">inf</param>
+				</result>
+	</action>
+	<!--发送email   front/user/sendemail  -->
+	<action name="sendemail" class="FrontAction" method="sendemail">
 				<result type="json">
 				 <param name="root">inf</param>
 				</result>

@@ -52,4 +52,34 @@ public void addUser(String email, String pwd) {
 	ud.addUser(email, pwd);
 }
 
+@Override
+public void addMailMsg(String email,String mail1) {
+	// TODO Auto-generated method stub
+	ud.addMailMsg(email,mail1);
+}
+
+@Override
+public List<User> findEmailbox(String email) {
+	// TODO Auto-generated method stub
+	return ud.findEmailbox(email);
+}
+
+@Override
+public List<User> findCaptcha(String email, String captcha) {
+	// TODO Auto-generated method stub
+	return ud.findCaptcha(email,captcha);
+}
+
+@Override
+public void updatePwd(String email, String password) {
+	// TODO Auto-generated method stub
+	ud.updatePwd(email, password);
+}
+
+@Override
+public void editUser(User user) {
+	ud.editUser( user);
+	
+}
+
 }

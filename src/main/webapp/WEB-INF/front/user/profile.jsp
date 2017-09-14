@@ -45,22 +45,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </c:if>
                         </div>
                         <div class="profile_ifo_area">
-                            <form action="${pageContext.request.contextPath}/front/user/profile.action" method="post">
+                            <form action="${pageContext.request.contextPath}/front/user/profileSub" method="post">
                                 <div class="form_group">
-                                    <span class="dd">昵&#x3000;称：</span><input type="text" name="nick_name" value="${user.nick_name}" >
+                                    <span class="dd">昵&#x3000;称：</span><input type="text" name="usersub.nick_name" value="${user.nick_name}" >
                                 </div>
                                 <div class="form_group">
                                     <span class="dd">性&#x3000;别：</span>
-                                    <input type="radio" id="man" <c:if test="${user.sex==1}">checked='checked'</c:if> value="1" name="sex"><label for="man">男</label>
-                                    <input type="radio" id="woman" <c:if test="${user.sex==2}">checked='checked'</c:if> value="2" name="sex"><label for="woman">女</label>
+                                    <input type="radio" id="man" <c:if test="${user.sex==1}">checked='checked'</c:if> value="1" name="usersub.sex"><label for="man">男</label>
+                                    <input type="radio" id="woman" <c:if test="${user.sex==2}">checked='checked'</c:if> value="2" name="usersub.sex"><label for="woman">女</label>
                                 </div>
                                 <div class="form_group">
                                     <span class="dd">生&#x3000;日：</span>
-                                    <input type="date"  name="birthday" value="${user.birthday}">
+                                    <input type="date"  name="usersub.birthday" value="${user.birthday}">
                                 </div>
                                 <div class="form_group">
                                     <span class="dd">邮&#x3000;箱：</span>
-                                      <input type="hidden"  name="email" value="${user.email}"> 
+                                      <input type="hidden"  name="usersub.email" value="${user.email}"> 
                                     <span >${user.email}</span>
                                 </div>
                                 <div class="form_group">
@@ -68,8 +68,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <input type="hidden" id="uprovince" value="${user.province }">
                                     <input type="hidden" id="ucity" value="${user.city }">
                                     <div id="city">
-                                        <select class="prov" name="province"></select>
-                                        <select class="city" name="city"></select>
+                                        <select class="prov" name="usersub.province"></select>
+                                        <select class="city" name="usersub.city"></select>
                                     </div>
                                 </div>
                                 <div class="form_submit dd">

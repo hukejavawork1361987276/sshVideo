@@ -2,7 +2,9 @@ package com.zhiyou100.web.action;
 
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.codec.digest.DigestUtils;
@@ -12,6 +14,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ModelDriven;
 import com.zhiyou100.model.Course;
 import com.zhiyou100.model.LoginInf;
 import com.zhiyou100.model.Subject;
@@ -19,6 +22,7 @@ import com.zhiyou100.model.User;
 import com.zhiyou100.model.Video;
 import com.zhiyou100.service.UserService;
 import com.zhiyou100.video.utils.HMS;
+import com.zhiyou100.video.utils.MailUtil;
 
 /**  
 * @ClassName:FrontAction.java  
@@ -34,6 +38,9 @@ public class FrontAction {
 	private Integer subjectId;
 	private String email;
 	private String password;
+	private String captcha;
+	private String pwdAgain;
+	private User usersub=new User();
 	
 	
 	
@@ -41,6 +48,24 @@ public class FrontAction {
 	
 	
 	
+	public User getUsersub() {
+		return usersub;
+	}
+	public void setUsersub(User usersub) {
+		this.usersub = usersub;
+	}
+	public String getPwdAgain() {
+		return pwdAgain;
+	}
+	public void setPwdAgain(String pwdAgain) {
+		this.pwdAgain = pwdAgain;
+	}
+	public String getCaptcha() {
+		return captcha;
+	}
+	public void setCaptcha(String captcha) {
+		this.captcha = captcha;
+	}
 	public String getEmail() {
 		return email;
 	}
@@ -109,14 +134,91 @@ public class FrontAction {
 			}
 			return "success";
 		}
+		//退出
 		public String exit(){
-			System.out.println("dsgtysession1");
 			 HttpSession session = ServletActionContext.getRequest().getSession();
-			 System.out.println("dsgtysession2");
 			 session.invalidate();
 			return "success";	
 		}
-		
+		//忘记密码页面跳转
+		public String forgetpwdPage(){
+			
+			return "success";	
+		}
+		//sendemail
+		public String sendemail(){
+			System.out.println("sdafgdh:"+email);
+			 inf=new LoginInf();
+			
+			//产生验证码
+			String str=UUID.randomUUID().toString();
+			String mailMSG=	str.substring(0, 5);
+			//查找邮箱
+			List<User> li=	us.findEmailbox(email);
+			System.out.println(li);
+			if (li.size()==0) {
+				inf.setMessage("不是注册邮箱!");
+			}else{
+				System.out.println("存验证码");
+				//存验证码
+				us.addMailMsg(email,mailMSG);
+				//发邮件
+				System.out.println("发邮件");
+				try {
+					MailUtil.send(email, "验证消息", mailMSG);
+					inf.setSuccess(true);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+	
+			return "success";	
+		}
+		//提交验证码
+		public String forgetpwd(){
+			List<User> user=	us.findCaptcha(email,captcha);
+			if (user.size()==0) {
+				return "false";
+			}else{
+				return "success";
+			}
+		}
+		//重置密码
+		public String resetpwd(){
+			String pwd = DigestUtils.md5Hex(password);
+			us.updatePwd(email,pwd);
+					return"success";
+				}
+		public String message(){
+			List<User> u =	us.findUser(email);
+			for (User user : u) {
+				HttpSession session = ServletActionContext.getRequest().getSession();
+				 session.setAttribute("user", user);	
+			}
+			 
+			return"success";
+		}
+		public String profile(){
+			List<User> u =	us.findUser(email);
+			for (User user : u) {
+				HttpSession session = ServletActionContext.getRequest().getSession();
+				 session.setAttribute("user", user);	
+			}
+			 
+			return"success";
+		}
+		public String	 profileSub(){
+			us.editUser(usersub);
+			
+			List<User> u =	us.findUser(usersub.getEmail());
+			for (User user : u) {
+				System.out.println("currentSession;"+user);
+				HttpSession session = ServletActionContext.getRequest().getSession();
+				 session.setAttribute("user", user);	
+			}
+			return"success";
+		}
 		/**
 		 * web图片超链接
 		 */

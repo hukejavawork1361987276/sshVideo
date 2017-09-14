@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </header>
     <main>
         <div class="container">
-            <form class="ma" action="${pageContext.request.contextPath}/front/user/resetpwd.action">
+            <form class="ma" action="${pageContext.request.contextPath}/front/user/resetpwd">
                <input type="hidden" name="email" value="${email}"/>
                 <input type="hidden" name="captcha" value="${captcha}"/>
                 <div class="form_header">

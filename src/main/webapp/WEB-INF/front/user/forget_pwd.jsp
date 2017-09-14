@@ -28,14 +28,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </header>
     <main>
         <div class="container">
-            <form class="ma" action="${pageContext.request.contextPath}/front/user/forgetpwd.action" method="post" >
+            <form class="ma" action="${pageContext.request.contextPath}/front/user/forgetpwd" method="post" >
                 <div class="form_header">
                     <div class="form_title">
                         <h2>忘记密码</h2>
                         <span>通过注册邮箱重设密码</span>
                     </div>
                     <div class="form_back">
-                        <a href="${pageContext.request.contextPath}/front/user/index.action">返回立即登录</a>
+                        <a href="${pageContext.request.contextPath}/front/user/index1">返回立即登录</a>
                     </div>
                 </div>
                 <div class="form_body">
@@ -58,7 +58,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			var email = $('#email').val();
 			//改为ajax提交邮箱
 			if(email!=null&&email!=''){
-				$.post('${pageContext.request.contextPath}/front/user/sendemail.action',{email:email},function(data){
+				$.post('ajax/user/sendemail',{email:email},function(data){
 					console.log(data);
 					if(data.success){
 						alert('验证码已发送到邮箱，请注意查收');

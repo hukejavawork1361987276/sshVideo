@@ -83,5 +83,52 @@ public  SessionFactory getFactory(){
 		getHibernateTemplate().save(u);
 		
 	}
+//存邮件信息到数据库
+	@Override
+	public void addMailMsg(String email,String mailMSG) {
+	
+	Session session=	getHibernateTemplate().getSessionFactory().getCurrentSession();
+	User user=	(User) session.createQuery("from User where email=?").setParameter(0, email).uniqueResult();
+
+	user.setCaptcha(mailMSG);
+		 getHibernateTemplate().update(user);
+		
+	}
+
+	@Override
+	public List<User> findEmailbox(String email) {
+		List<User> list = (List<User>) getHibernateTemplate().find("from User where email=?",email);
+		 return list;
+	}
+//查找验证码
+	@Override
+	public List<User> findCaptcha(String email, String captcha) {
+		List<User> list = (List<User>) getHibernateTemplate().find("from User where email=? and captcha=?",email,captcha);
+
+		return list;
+	}
+//重置密码提交
+	@Override
+	public void updatePwd(String email, String password) {
+		Session session=	getHibernateTemplate().getSessionFactory().getCurrentSession();
+		User user=	(User) session.createQuery("from User where email=?").setParameter(0, email).uniqueResult();
+
+		user.setPassword(password);
+			 getHibernateTemplate().update(user);
+		
+	}
+//提交更新资料
+	@Override
+	public void editUser(User user) {
+		Session session=	getHibernateTemplate().getSessionFactory().getCurrentSession();
+		User user1=	(User) session.createQuery("from User where email=?").setParameter(0, user.getEmail()).uniqueResult();
+			user1.setBirthday(user.getBirthday());
+			user1.setSex(user.getSex());
+			user1.setNick_name(user.getNick_name());
+			user1.setCity(user.getCity());
+			user1.setProvince(user.getProvince());
+			 getHibernateTemplate().update(user1);
+		
+	}
 
 }
