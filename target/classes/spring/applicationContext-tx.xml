@@ -38,7 +38,9 @@
 <aop:config>
 	<aop:pointcut expression="execution(* com.zhiyou100.service.impl.*UserServiceImpl.*(..))" id="pcAdv"/>
 	<aop:pointcut expression="execution(* com.zhiyou100.service.impl.*BackServiceImpl.*(..))" id="pcAdv1"/>
+	<aop:pointcut expression="execution(* com.zhiyou100.service.impl.*ServiceImpl.*(..))" id="pcAdv2"/>
 	<aop:advisor advice-ref="txAdv" pointcut-ref="pcAdv"/>
 	<aop:advisor advice-ref="txAdv" pointcut-ref="pcAdv1"/>
+	<aop:advisor advice-ref="txAdv" pointcut-ref="pcAdv2"/>
 </aop:config>
 </beans>

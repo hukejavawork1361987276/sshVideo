@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <table cellspacing="10">
                     <tr>
                         <td colspan="2">
-                            <a href="${pageContext.request.contextPath}/front/shareC/index?subjectId=1">
+                            <a href="${pageContext.request.contextPath}/front/user/courseIndex?subjectId=1">
                                 <img src="static/img/html5.jpg" alt="" class="image scale" draggable="false">
                                 <div class="headline">
                                     <span>Web前端教程</span>
@@ -44,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </td>
                         <td>
                             <!--上线时修改id-->
-                            <a href="${pageContext.request.contextPath}/front/course/index.action?subjectId=6">
+                            <a href="${pageContext.request.contextPath}/front/user/courseIndex?subjectId=6">
                                 <img src="static/img/ui.jpg" alt="" class="image scale" draggable="false">
                                 <div class="headline">
                                     <span>UI设计教程</span>
@@ -73,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </a>
                         </td>
                         <td colspan="2">
-                            <a href="${pageContext.request.contextPath}/front/course/index.action?subjectId=10">
+                            <a href="${pageContext.request.contextPath}/front/user/courseIndex?subjectId=10">
                                 <img src="static/img/python.jpg" alt="" class="image scale" draggable="false">
                                 <div class="headline">
                                     <span>Python教程</span>
@@ -84,7 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <a href="${pageContext.request.contextPath}/front/course/index.action?subjectId=11">
+                            <a href="${pageContext.request.contextPath}/front/user/courseIndex?subjectId=11">
                                 <img src="static/img/php.jpg" alt="" class="image scale" draggable="false">
                                 <div class="headline">
                                     <span>PHP教程</span>

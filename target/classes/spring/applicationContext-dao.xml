@@ -51,6 +51,9 @@
 <bean class="com.zhiyou100.dao.impl.BackDaoImpl" >
 <property name="sessionFactory" ref="sessionFactory" ></property>
 </bean>
+<bean class="com.zhiyou100.dao.impl.FrontShareCDaoImpl" >
+<property name="sessionFactory" ref="sessionFactory" ></property>
+</bean>
 
 
 
