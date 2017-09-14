@@ -49,7 +49,6 @@
 <param name="namespace">/back/admin</param>
 <param name="actionName">videoList</param>
 </result>
-
 </action>
 
 <action name="videoList" class="BackAction" method="videoList">
