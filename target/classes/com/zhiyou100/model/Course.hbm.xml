@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+   <!-- id           | int(11)      | NO   | PRI | NULL    | auto_increment |
+| course_name  | varchar(50)  | YES  |     | NULL    |                |
+| course_descr | varchar(255) | YES  |     | NULL    |                |
+| insert_time  | datetime     | YES  |     | NULL    |                |
+| update_time  | datetime     | YES  |     | NULL    |                |
+| subject_id -->
+     
+    <hibernate-mapping package="com.zhiyou100.model">
+    
+    	<class name="Course" table="course">
+    		<id name="id" column="id ">
+    			<generator class="native"></generator>
+    		</id>
+    		<property name="course_name" ></property>
+    		<property name="course_descr" ></property>
+    		<property name="insert_time" ></property>
+    		<property name="update_time" ></property>
+    		
+
+    
+  <set name="setVideo" inverse="true">
+    <key column="course_id"></key>
+    <one-to-many class="Video"/>
+    </set> 
+    
+
+    	</class>
+    
+    
+    </hibernate-mapping>

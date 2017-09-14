@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+   <!--  id               | int(11)      | NO   | PRI | NULL    | auto_increment |
+| speaker_name     | varchar(30)  | YES  |     | NULL    |                |
+| speaker_job      | varchar(30)  | YES  |     | NULL    |                |
+| speaker_head_url | varchar(255) | YES  |     | NULL    |                |
+| speaker_descr    | varchar(255) | YES  |     | NULL    |                |
+| insert_time      | datetime     | YES  |     | NULL    |                |
+| update_time  -->
+     
+    <hibernate-mapping package="com.zhiyou100.model">
+    
+    	<class name="Speaker" table="Speaker">
+    		<id name="id" column="id">
+    			<generator class="native"></generator>
+    		</id>
+    		<property name="speaker_name"></property>
+    		<property name="speaker_job"></property>
+    		<property name="speaker_head_url"></property>
+    		<property name="speaker_descr"></property>
+    		<property name="insert_time"></property>
+    		<property name="update_time"></property>
+    <set name="setVideo" inverse="true">
+    <key column="speaker_id"></key>
+    <one-to-many class="Video"/>
+    </set> 
+    	</class>
+   
+    
+    </hibernate-mapping>

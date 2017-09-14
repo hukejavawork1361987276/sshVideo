@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+ "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "struts-2.3.dtd">
+<struts>
+<!-- 不配也可以 -->
+<constant name="struts.objectFactory" value="spring"></constant>
+<constant name="struts.action.excludePattern" value="/static/css/.*,/static/fonts/.*,/static/img/.*,/static/js/.*"></constant>
+
+<!-- <package name="name1" namespace="/userAction" extends="struts-default">
+<action name="add" class="UserAction" method="add">
+<result name="success">/NewFile.jsp</result>
+</action>
+</package> -->
+<package name="front" namespace="/front/user" extends="struts-default">
+<action name="index1" class="FrontAction" method="index1">
+<result name="success">/WEB-INF/front/index.jsp</result>
+</action>
+<action name="index" class="FrontAction" method="index">
+<result name="success">/WEB-INF/front/course/index.jsp</result>
+</action>
+
+</package>
+
+ <package name="ajax" namespace="/ajax/user" extends="json-default">
+<action name="login" class="FrontAction" method="login">
+				<result type="json">
+				 <param name="root">pwd</param>
+				</result>
+</action>
+
+<action name="deleOneVideo" class="BackAction" method="deleOneVideo">
+<result type="json">
+<param name="root">inf</param>
+</result>
+</action>
+</package> 
+<package name="back" namespace="/back/admin" extends="struts-default">
+<global-results>
+<result name="false">/WEB-INF/back/login.jsp</result>
+</global-results>
+
+
+<action name="loginYM" class="BackAction" method="loginYM">
+<result name="success">/WEB-INF/back/login.jsp</result>
+</action>
+
+<action name="login" class="BackAction" method="login">
+<result name="success">/WEB-INF/back/menu.jsp</result>
+</action>
+
+<action name="videoList" class="BackAction" method="videoList">
+<result name="success">/WEB-INF/back/video/radioList.jsp</result>
+</action>
+
+<action name="speakerList" class="BackAction" method="speakerList">
+<result name="success">/WEB-INF/back/speaker/speakerList.jsp</result>
+</action>
+
+<action name="addVideo" class="BackAction" method="addVideo">
+<result name="success">/WEB-INF/back/video/addRadio.jsp</result>
+</action>
+<action name="addVideoSub" class="BackAction" method="addVideoSub">
+<result  type="chain">
+<param name="namespace">/back/admin</param>
+<param name="actionName">videoList</param>
+</result>
+</action>
+
+<action name="editVideo" class="BackAction" method="editVideo">
+<result name="success">/WEB-INF/back/video/editRadio.jsp</result>
+</action>
+
+<action name="editVideoSub" class="BackAction" method="editVideoSub">
+<result  type="chain">
+<param name="namespace">/back/admin</param>
+<param name="actionName">videoList</param>
+</result>
+</action>
+<action name="deleVideo" class="BackAction" method="deleVideo">
+<result  type="chain">
+<param name="namespace">/back/admin</param>
+<param name="actionName">videoList</param>
+</result>
+</action>
+
+
+</package>
+
+
+</struts>

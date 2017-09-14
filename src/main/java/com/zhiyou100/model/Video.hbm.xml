@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+     <!-- | id               | int(11)      | NO   | PRI | NULL    | auto_increment |
+| video_title      | varchar(255) | YES  |     | NULL    |                |
+| speaker_id       | int(11)      | YES  |     | NULL    |                |
+| course_id        | int(11)      | YES  |     | NULL    |                |
+| video_length     | int(11)      | YES  |     | NULL    |                |
+| video_image_url  | varchar(255) | YES  |     | NULL    |                |
+| video_url        | varchar(255) | YES  |     | NULL    |                |
+| video_descr      | varchar(255) | YES  |     | NULL    |                |
+| insert_time      | datetime     | YES  |     | NULL    |                |
+| update_time      | datetime     | YES  |     | NULL    |                |
+| video_play_times -->
+    <hibernate-mapping package="com.zhiyou100.model">
+    
+    	<class name="Video" table="video">
+    		<id name="id" column="id">
+    			<generator class="native"></generator>
+    		</id>
+    		<property name="video_title"></property>
+    	<!-- 	<property name="speaker_id"></property>
+    		<property name="course_id"></property> -->
+    		<property name="video_length"></property>
+    		<property name="video_image_url"></property>
+    		<property name="video_url"></property>
+    		<property name="video_descr"></property>
+    		<property name="insert_time"></property>
+    		<property name="update_time"></property>
+    		<property name="video_play_times"></property>
+    <many-to-one name="speaker" class="Speaker" column="speaker_id" cascade="save-update">
+    </many-to-one>
+    
+    <many-to-one name="course_id" class="Course" column="course_id" cascade="save-update">
+    </many-to-one>
+    		
+    	</class>
+    
+    
+    </hibernate-mapping>
