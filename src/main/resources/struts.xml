@@ -10,30 +10,50 @@
 <action name="add" class="UserAction" method="add">
 <result name="success">/NewFile.jsp</result>
 </action>
-</package> -->
+</package>  -->
+
+<!-- front package -->
 <package name="front" namespace="/front/user" extends="struts-default">
-<action name="index1" class="FrontAction" method="index1">
-<result name="success">/WEB-INF/front/index.jsp</result>
-</action>
-<action name="index" class="FrontAction" method="index">
-<result name="success">/WEB-INF/front/course/index.jsp</result>
-</action>
+	<!--前台页面  -->
+	<action name="index1" class="FrontAction" method="index1">
+	<result name="success">/WEB-INF/front/index.jsp</result>
+	</action>
+	
+	<action name="index" class="FrontAction" method="index">
+	<result name="success">/WEB-INF/front/course/index.jsp</result>
+	</action>
+	<!-- 退出 -->
+	<action name="exit" class="FrontAction" method="exit">
+	<result  type="redirectAction">
+	<param name="namespace">/front/user</param>
+	<param name="actionName">index1</param>
+	</result>
+	</action>
+
 
 </package>
-
+<!--ajax  -->
  <package name="ajax" namespace="/ajax/user" extends="json-default">
-<action name="login" class="FrontAction" method="login">
+ 	<!-- 前台登录ajax -->
+	<action name="login" class="FrontAction" method="login">
 				<result type="json">
-				 <param name="root">pwd</param>
+				 <param name="root">inf</param>
 				</result>
-</action>
-
-<action name="deleOneVideo" class="BackAction" method="deleOneVideo">
-<result type="json">
-<param name="root">inf</param>
-</result>
-</action>
+	</action>
+	<!-- 前台注册ajax -->
+	<action name="regist" class="FrontAction" method="regist">
+				<result type="json">
+				 <param name="root">inf</param>
+				</result>
+	</action>
+	<!-- 后台删除ajax -->
+	<action name="deleOneVideo" class="BackAction" method="deleOneVideo">
+		<result type="json">
+		<param name="root">inf</param>
+		</result>
+	</action>
 </package> 
+<!-- 后台package -->
 <package name="back" namespace="/back/admin" extends="struts-default">
 <global-results>
 <result name="false">/WEB-INF/back/login.jsp</result>

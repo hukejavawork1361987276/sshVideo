@@ -30,7 +30,7 @@ $(function(){
 //			var pwd = $('#loginPassword').val();
 			console.log($('#loginForm').serialize());
 			//使用ajax的post方法提交登录信息
-			$.post('front/user/login.action',$('#loginForm').serialize(),function(result){
+			$.post('ajax/user/login',$('#loginForm').serialize(),function(result){
 				console.log(result);
 				if(result.success){
 					//登录成功,刷新页面
@@ -66,7 +66,7 @@ $(function(){
 			//ajax提交注册信息，并且返回注册结果
 			console.log($('#regForm').serialize());
 			//使用ajax的post方法提交注册信息
-			$.post('front/user/regist.action',$('#regForm').serialize(),function(result){
+			$.post('ajax/user/regist',$('#regForm').serialize(),function(result){
 				console.log(result);
 				if(result.success){
 					//注册成功,刷新页面

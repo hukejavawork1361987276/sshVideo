@@ -33,8 +33,8 @@ import com.zhiyou100.service.UserService;
 public class BackAction implements ModelDriven<Video>{
 	private Video v=new Video();
 	private Integer vid;
-private	LoginInf inf;
-private List<Integer> deleVideo;
+	private	LoginInf inf;
+	private List<Integer> deleVideo;
 
 	
 

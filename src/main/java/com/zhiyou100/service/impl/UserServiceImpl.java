@@ -34,4 +34,22 @@ public List<Course> findCourseVideo(Integer subjectId) {
 	return ud.findCourseVideo(subjectId);
 }
 
+@Override
+public List<User> loginFront(String email, String password) {
+	// TODO Auto-generated method stub
+	return ud.loginFront(email,password);
+}
+
+@Override
+public List<User> findUser(String email) {
+	// TODO Auto-generated method stub
+	return ud.findUser(email);
+}
+
+@Override
+public void addUser(String email, String pwd) {
+	// TODO Auto-generated method stub
+	ud.addUser(email, pwd);
+}
+
 }

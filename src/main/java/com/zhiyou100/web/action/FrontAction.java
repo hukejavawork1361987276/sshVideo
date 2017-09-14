@@ -1,7 +1,12 @@
 package com.zhiyou100.web.action;
 
 import java.util.List;
+import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -10,6 +15,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.zhiyou100.model.Course;
 import com.zhiyou100.model.LoginInf;
 import com.zhiyou100.model.Subject;
+import com.zhiyou100.model.User;
 import com.zhiyou100.model.Video;
 import com.zhiyou100.service.UserService;
 import com.zhiyou100.video.utils.HMS;
@@ -26,11 +32,27 @@ public class FrontAction {
 	@Autowired
 	UserService us; 
 	private Integer subjectId;
+	private String email;
+	private String password;
 	
 	
 	
 	
 	
+	
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public Integer getSubjectId() {
 		return subjectId;
 	}
@@ -40,10 +62,10 @@ public class FrontAction {
 	private	LoginInf inf;
 
 	public LoginInf getInf() {
-	return inf;
+		return inf;
 	}
 	public void setInf(LoginInf inf) {
-	this.inf = inf;
+		this.inf = inf;
 	}
 	/**
 	 * µÇÂ¼Ò³Ãæ
@@ -56,13 +78,45 @@ public class FrontAction {
 		 * µÇÂ¼
 		 */
 		public String login(){
-			System.out.println("-----µÇÂ¼·½·¨");
-			 inf=new LoginInf();
-			//inf.setSuccess("µÇÂ¼³É¹¦!");
+			inf=new LoginInf();
+			if (!("").equals(email)&&!("").equals(password)) {
+				String pwd = DigestUtils.md5Hex(password);
+				List<User> u=	us.loginFront(email,pwd);
+				if (u.size()!=0) {
+					inf.setSuccess(true);
+				}
+				for (User user : u) {
+					 HttpSession session = ServletActionContext.getRequest().getSession();
+					 session.setAttribute("user", user);	
+				}
+					
+			}
+		
 			inf.setMessage("ÓÃ»§ÃûÃÜÂë²»Æ¥Åä!");
 			return "success";
 			
 		}
+		//×¢²á
+		public String regist(){
+			inf=new LoginInf();
+			List<User> u =	us.findUser(email);
+			if (u.size()==1) {
+				inf.setMessage("´ËÓÊÏäÒÑ±»×¢²á!");
+			}else{
+				String pwd = DigestUtils.md5Hex(password);
+				us.addUser(email,pwd);
+				inf.setSuccess(true);
+			}
+			return "success";
+		}
+		public String exit(){
+			System.out.println("dsgtysession1");
+			 HttpSession session = ServletActionContext.getRequest().getSession();
+			 System.out.println("dsgtysession2");
+			 session.invalidate();
+			return "success";	
+		}
+		
 		/**
 		 * webÍ¼Æ¬³¬Á´½Ó
 		 */

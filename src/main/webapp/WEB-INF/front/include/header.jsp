@@ -4,16 +4,16 @@
 
 <header>
 	<div class="container">
-		<span>欢迎来到IT培训的黄埔军校——智游教育！</span>
+		<span>欢迎来到IT培训的黄埔军校——智游教育!</span>
 
 
-		<c:if test="${not empty _front_user}">
+		<c:if test="${not empty user}">
 			<div id="userBlock" style="float:right">
-				<a href="${pageContext.request.contextPath}/front/user/logout.action">退出</a>
-				<a href="${pageContext.request.contextPath}/front/user/index1.action" id="account">${sessionScope._front_user.email }</a>
+				<a href="${pageContext.request.contextPath}/front/user/exit">退出</a>
+				<a href="${pageContext.request.contextPath}/front/user/index1.action" id="account">${sessionScope.user.email}</a>
 			</div>
 		</c:if>
-		<c:if test="${empty _front_user}">
+		<c:if test="${empty user}">
 			<div id="regBlock" style="float:right">
 				<a href="javascript:;" id="reg_open"><img src="static/img/we.png">注册</a>
 				<a href="javascript:;" id="login_open"><img src="static/img/we.png">登录</a>

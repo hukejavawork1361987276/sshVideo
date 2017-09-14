@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+ <!-- private int id;
+	private String nick_name;
+	private int sex;
+	private Date birthday;
+	private String email;
+	private String province;
+	private String city;
+	private String head_url;
+	private String password;
+	private Timestamp insert_time;
+	private Timestamp update_time;
+	private String captcha; -->
+     
+    <hibernate-mapping package="com.zhiyou100.model">
+    
+    	<class name="User" table="user">
+    		<id name="id" column="id ">
+    			<generator class="native"></generator>
+    		</id>
+    		<property name="nick_name" column="nick_name"></property>
+    		<property name="sex" column="sex"></property>
+    		<property name="birthday" column="birthday"></property>
+    		<property name="email" column="email"></property>
+    		<property name="province" column="province"></property>
+    		<property name="city" column="city"></property>
+    		<property name="head_url" column="head_url"></property>
+    		<property name="password" column="password"></property>
+    		<property name="insert_time" column="insert_time"></property>
+    		<property name="update_time" column="update_time"></property>
+    		<property name="captcha" column="captcha"></property>
+    	</class>
+    
+    
+    </hibernate-mapping>

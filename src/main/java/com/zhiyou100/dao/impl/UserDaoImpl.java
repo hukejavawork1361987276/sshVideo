@@ -62,5 +62,26 @@ public  SessionFactory getFactory(){
 		
 		return list1;
 	}
+//login
+	@Override
+	public List<User> loginFront(String email, String password) {
+		List<User> list = (List<User>) getHibernateTemplate().find("from User where email=? and password=?", email,password);
+		return list;
+	}
+//regist≈–∂œ” œ‰¥Ê‘⁄
+	@Override
+	public List<User> findUser(String email) {
+		List<User> list = (List<User>) getHibernateTemplate().find("from User where email=?",email);
+		return list;
+	}
+
+	@Override
+	public void addUser(String email, String pwd) {
+		User u=new User();
+		u.setEmail(email);
+		u.setPassword(pwd);
+		getHibernateTemplate().save(u);
+		
+	}
 
 }
