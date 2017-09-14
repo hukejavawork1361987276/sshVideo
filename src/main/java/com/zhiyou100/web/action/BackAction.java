@@ -131,7 +131,7 @@ public void setInf(LoginInf inf) {
 		ServletActionContext.getRequest().setAttribute("allCourse", allCourse);
 		
 		int currentPage=(page==null?1:Integer.parseInt(page));
-System.out.println(currentPage+"---"+speakid+"---"+courseid+"---");
+
 
 		Page page1=bs.loadPageVppp(titlelike,speakid,courseid,currentPage);
 	
@@ -140,30 +140,28 @@ System.out.println(currentPage+"---"+speakid+"---"+courseid+"---");
 		return "success";
 		
 	}
-	
+	//speaker分页
 	public String speakerList(){
+	
+		int currentPage=(page==null?1:Integer.parseInt(page));
 		
-	/*	//*/
+		Page page1=bs.loadPageppp(currentPage);
+			
+		ServletActionContext.getRequest().setAttribute("page", page1);
 
-			int currentPage=(page==null?1:Integer.parseInt(page));
-		
-			Page page1=bs.loadPageppp(currentPage);
-			
-			ServletActionContext.getRequest().setAttribute("page", page1);
-		
-			
-			return "success";
+		return "success";
 }
 	//添加视频页面
 	public String addVideo(){
 		//查找主讲人列表
-				List<Speaker> allSpeaker= bs.findSpeaker();	
-				ServletActionContext.getRequest().setAttribute("allSpeaker", allSpeaker);
-				//查找课程列表
-				List<Course> allCourse= bs.findCourse();	
-				ServletActionContext.getRequest().setAttribute("allCourse", allCourse);
+		List<Speaker> allSpeaker= bs.findSpeaker();	
+		ServletActionContext.getRequest().setAttribute("allSpeaker", allSpeaker);
+		//查找课程列表
+		List<Course> allCourse= bs.findCourse();	
+		ServletActionContext.getRequest().setAttribute("allCourse", allCourse);
 		return "success";
 	}
+	//添加video提交
 	public String addVideoSub(){
 		bs.addVideo(v);
 		return "success";
@@ -173,31 +171,35 @@ System.out.println(currentPage+"---"+speakid+"---"+courseid+"---");
 		// TODO Auto-generated method stub
 		return v;
 	}
+	//编辑video
 	public String editVideo() {
+		//查找主讲人列表
 		List<Speaker> allSpeaker= bs.findSpeaker();	
 		ServletActionContext.getRequest().setAttribute("allSpeaker", allSpeaker);
 		//查找课程列表
 		List<Course> allCourse= bs.findCourse();	
 		ServletActionContext.getRequest().setAttribute("allCourse", allCourse);
-	
-	Video video= bs.findVideo(vid);
-	System.out.println(video);
+		//查到对应的video
+		Video video= bs.findVideo(vid);
 		ServletActionContext.getRequest().setAttribute("video", video);
 		return "success";
 	}
 	public String editVideoSub() {
-	bs.editVideo(v);
+		bs.editVideo(v);
 		return "success";
 	}
-	
+	//删除一条video
 	public String deleOneVideo(){
-		System.out.println("传回iddele:"+vid);
 		inf=new LoginInf();
-		 int a=bs.deleVideo(vid);
-		inf.setSuccess(true);
-		inf.setMessage("success");
+		if (vid!=null) {
+			int a=bs.deleVideo(vid);
+			inf.setSuccess(true);
+			inf.setMessage("success");	
+		}
+		
 		return "success";
 	}
+	//批量删除video
 	public String deleVideo(){
 		System.out.println(deleVideo);
 		bs.deleAVideo(deleVideo);

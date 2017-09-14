@@ -62,9 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		           			type:"post",
 		           			data:{"vid":id},
 		           			success:function(msg){
-		           				alert("zdg");
-		           				alert(msg.success);
-		           				
+		        
 		           				if(msg.success){
 		           					location.reload();
 		           				}
