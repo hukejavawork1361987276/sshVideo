@@ -18,10 +18,7 @@
 	<action name="index1" class="FrontAction" method="index1">
 	<result name="success">/WEB-INF/front/index.jsp</result>
 	</action>
-	<!--front页面共享课程  -->
-	<action name="index" class="FrontAction" method="index">
-		<result name="success">/WEB-INF/front/course/index.jsp</result>
-	</action>
+	
 	<!-- 退出 -->
 	<action name="exit" class="FrontAction" method="exit">
 		<result  type="redirectAction">
@@ -68,7 +65,33 @@
 		/WEB-INF/front/user/index.jsp
 		</result>
 	</action>
+		<!-- 更改个人picPage -->
+	<action name="avatar" class="FrontAction" method="avatar">
+		<result name="success">
+		/WEB-INF/front/user/avatar.jsp
+		</result>
+	</action>
+		<!-- 更改个人pic sub -->
+	<action name="avatarSbu" class="FrontAction" method="avatarSbu">
+		<result name="success">
+		/WEB-INF/front/user/avatar.jsp
+		</result>
+	</action>
+	<!-- 密码安全page -->
+	<action name="passwordPage" class="FrontAction" method="passwordPage">
+		<result name="success">
+		/WEB-INF/front/user/password.jsp
+		</result>
+	</action>
+	<!-- 密码安全sub -->
+	<action name="passwordSub" class="FrontAction" method="passwordSub">
+		<result name="success">
+		/WEB-INF/front/user/index.jsp
+		</result>
+	</action>
 </package>
+
+
 <!--ajax  -->
  <package name="ajax" namespace="/ajax/user" extends="json-default">
  	<!-- 前台登录ajax -->
@@ -96,6 +119,7 @@
 		</result>
 	</action>
 </package> 
+
 <!-- 后台package -->
 <package name="back" namespace="/back/admin" extends="struts-default">
 <global-results>
@@ -147,8 +171,13 @@
 <param name="actionName">videoList</param>
 </result>
 </action>
-
-
+</package>
+<!--front页面共享 -->
+<package name="front" namespace="/front/ShareC" extends="struts-default">
+	<!--front页面共享课程  -->
+	<action name="index" class="FrontAction" method="index">
+		<result name="success">/WEB-INF/front/course/index.jsp</result>
+	</action>
 </package>
 
 

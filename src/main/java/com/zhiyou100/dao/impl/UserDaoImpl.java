@@ -130,5 +130,22 @@ public  SessionFactory getFactory(){
 			 getHibernateTemplate().update(user1);
 		
 	}
+//¸üĞÂpic
+	@Override
+	public void updatepic(String email, String databasepic) {
+		Session session=	getHibernateTemplate().getSessionFactory().getCurrentSession();
+		User user=	(User) session.createQuery("from User where email=?").setParameter(0, email).uniqueResult();
+
+		user.setHead_url(databasepic);
+		getHibernateTemplate().update(user);
+		
+	}
+//²éÕÒ¾ÉÃÜÂë
+	@Override
+	public List<User> findOldPassword(String email, String oldPassword) {
+		
+		 List<User> li=	(List<User>) getHibernateTemplate().find("from User where email=? and password=?", email,oldPassword);
+		return li;
+	}
 
 }

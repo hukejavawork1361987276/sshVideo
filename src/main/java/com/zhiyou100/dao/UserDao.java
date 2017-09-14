@@ -31,4 +31,8 @@ public interface UserDao {
 
 	void editUser(User user);
 
+	void updatepic(String email, String databasepic);
+
+	List<User> findOldPassword(String email, String oldPassword);
+
 }

@@ -2,6 +2,7 @@ package com.zhiyou100.service.impl;
 
 import java.util.List;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -80,6 +81,18 @@ public void updatePwd(String email, String password) {
 public void editUser(User user) {
 	ud.editUser( user);
 	
+}
+
+@Override
+public void updatepic(String email, String databasepic) {
+	ud.updatepic( email,  databasepic);
+	
+}
+
+@Override
+public List<User> findOldPassword(String email, String oldPassword) {
+	String pwd = DigestUtils.md5Hex(oldPassword);
+	return ud.findOldPassword(email,pwd);
 }
 
 }

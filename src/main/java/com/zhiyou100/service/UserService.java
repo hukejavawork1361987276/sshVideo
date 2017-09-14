@@ -31,5 +31,9 @@ public interface UserService {
 	void updatePwd(String email, String password);
 
 	void editUser(User user);
+
+	void updatepic(String email, String databasepic);
+
+	List<User> findOldPassword(String email, String oldPassword);
  
 }

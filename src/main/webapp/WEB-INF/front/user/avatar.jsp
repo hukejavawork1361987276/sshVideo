@@ -27,11 +27,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <h2>我的资料</h2>
             <div id="profile_tab">
                <ul class="profile_tab_header f_left clearfix">
-                    <li><a href="${pageContext.request.contextPath}/front/user/profile.action">更改资料</a></li>
+                    <li><a href="${pageContext.request.contextPath}/front/user/profile">更改资料</a></li>
                     <li class="profile_tab_line">|</li>
-                    <li><a href="${pageContext.request.contextPath}/front/user/avatar.action">更改头像</a></li>
+                    <li><a href="${pageContext.request.contextPath}/front/user/avatar">更改头像</a></li>
                     <li class="profile_tab_line">|</li>
-                    <li><a href="${pageContext.request.contextPath}/front/user/password.action">密码安全</a></li>
+                    <li><a href="${pageContext.request.contextPath}/front/user/passwordPage">密码安全</a></li>
                 </ul>
                 <div class="proflle_tab_body">
                     <div class="proflle_tab_workplace clearfix">
@@ -48,7 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <p style="text-align: center;">当前头像</p>
                         </div>
                         <div class="profile_ifo_area">
-                            <form id="upload_form" enctype="multipart/form-data" method="post" action="${pageContext.request.contextPath}/front/user/avatar.action" >
+                            <form id="upload_form" enctype="multipart/form-data" method="post" action="${pageContext.request.contextPath}/front/user/avatarSbu" >
                                 <p>请选择图像文件</p>
                                 <div>
                                 <input type="file" class="form-control" name="image_file" id="image_file" accept="image/png,image/jpeg,image/jpg"/>

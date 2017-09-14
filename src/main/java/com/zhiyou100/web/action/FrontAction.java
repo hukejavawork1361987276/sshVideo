@@ -1,5 +1,7 @@
 package com.zhiyou100.web.action;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -8,6 +10,8 @@ import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -40,14 +44,54 @@ public class FrontAction {
 	private String password;
 	private String captcha;
 	private String pwdAgain;
+	//更新资料
 	private User usersub=new User();
+	//文件上传
+	private File image_file;
+	private String image_fileFileName;
+	private String image_fileContentType;
+	//更改密码
+	private String oldPassword;
+	private String newPassword;
+	private String newPasswordAgain;
 	
 	
-	
-	
-	
-	
-	
+	public String getOldPassword() {
+		return oldPassword;
+	}
+	public void setOldPassword(String oldPassword) {
+		this.oldPassword = oldPassword;
+	}
+	public String getNewPassword() {
+		return newPassword;
+	}
+	public void setNewPassword(String newPassword) {
+		this.newPassword = newPassword;
+	}
+	public String getNewPasswordAgain() {
+		return newPasswordAgain;
+	}
+	public void setNewPasswordAgain(String newPasswordAgain) {
+		this.newPasswordAgain = newPasswordAgain;
+	}
+	public File getImage_file() {
+		return image_file;
+	}
+	public void setImage_file(File image_file) {
+		this.image_file = image_file;
+	}
+	public String getImage_fileFileName() {
+		return image_fileFileName;
+	}
+	public void setImage_fileFileName(String image_fileFileName) {
+		this.image_fileFileName = image_fileFileName;
+	}
+	public String getImage_fileContentType() {
+		return image_fileContentType;
+	}
+	public void setImage_fileContentType(String image_fileContentType) {
+		this.image_fileContentType = image_fileContentType;
+	}
 	public User getUsersub() {
 		return usersub;
 	}
@@ -208,9 +252,10 @@ public class FrontAction {
 			 
 			return"success";
 		}
+		//个人信息提交
 		public String	 profileSub(){
 			us.editUser(usersub);
-			
+			//更新session
 			List<User> u =	us.findUser(usersub.getEmail());
 			for (User user : u) {
 				System.out.println("currentSession;"+user);
@@ -219,9 +264,54 @@ public class FrontAction {
 			}
 			return"success";
 		}
+		//更改头像
+		public String avatar(){
+			
+			return"success";
+		}
+		//更改头像
+		public String avatarSbu(){
+			System.out.println("image_file"+image_file);
+			System.out.println("image_fileFileName"+image_fileFileName);
+			System.out.println("image_file"+image_file);
+			String str = UUID.randomUUID().toString().replaceAll("-", "");
+		    String ext = FilenameUtils.getExtension(image_fileFileName);
+		    String fileName = str+"."+ext;
+		    String databasepic= fileName+"."+FilenameUtils.getExtension(image_fileFileName);
+		    us.updatepic(email,databasepic);
+		    System.out.println("fileName:"+fileName);
+		try {
+			FileUtils.copyFile(new File(image_file.getAbsolutePath()), new File("D:\\develo\\Java\\vimage\\"+databasepic));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//session
+		List<User> u =	us.findUser(email);
+		for (User user : u) {
+			System.out.println("session:"+user);
+			HttpSession session = ServletActionContext.getRequest().getSession();
+			 session.setAttribute("user", user);	
+		}
+		
+			return"success";
+		}
+		//密码安全page
+		public String passwordPage(){
+			return"success";
+		}
+		//更新密码提交
+		public String passwordSub(){
+			List<User> li=	us.findOldPassword(email,oldPassword);
+			if (li.size()==1) {
+			us.updatePwd(email, newPassword);
+			}
+
+			return"success";
+		}
 		/**
 		 * web图片超链接
-		 */
+		 *//*
 		public String index(){
 			System.out.println("-----web图片超链接");
 			ActionContext.getContext().put("subjectId", subjectId);
@@ -231,7 +321,7 @@ public class FrontAction {
 			}
 			
 			List<Course>  course=	us.findCourseVideo(subjectId);
-		/*	for (Course course2 : course) {
+			for (Course course2 : course) {
 			//	List<Video> videoList = course2.getVideoList();
 				for (Video video : videoList) {
 					int vlength = video.getVideo_length();
@@ -241,11 +331,11 @@ public class FrontAction {
 					
 					
 				}
-			}*/
+			}
 
 			ActionContext.getContext().put("courses", course);			
 			return "success";
 			
 			
-		}
+		}*/
 }

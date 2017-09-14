@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <table cellspacing="10">
                     <tr>
                         <td colspan="2">
-                            <a href="${pageContext.request.contextPath}/front/user/index.action?subjectId=1">
+                            <a href="${pageContext.request.contextPath}/front/shareC/index?subjectId=1">
                                 <img src="static/img/html5.jpg" alt="" class="image scale" draggable="false">
                                 <div class="headline">
                                     <span>Web前端教程</span>
