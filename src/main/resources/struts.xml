@@ -147,6 +147,10 @@
 </global-results>
 
 
+<!-- addSpeakerYM -->
+<action name="addSpeakerYM" class="BackAction" method="addSpeakerYM">
+<result name="success">/WEB-INF/back/speaker/addSpeakerP.jsp</result>
+</action>
 <action name="loginYM" class="BackAction" method="loginYM">
 <result name="success">/WEB-INF/back/login.jsp</result>
 </action>

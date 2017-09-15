@@ -42,9 +42,9 @@ public class BackServiceImpl implements BackService{
 	}
 
 	@Override
-	public Page loadPageppp(int currentPage) {
+	public Page loadPageppp(int currentPage, String speaker_name,String speaker_job) {
 		
-		return bd.loadPageppp(currentPage);
+		return bd.loadPageppp(currentPage,speaker_name,speaker_job);
 	}
 
 	@Override

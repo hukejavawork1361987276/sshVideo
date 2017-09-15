@@ -35,10 +35,27 @@ public class BackAction implements ModelDriven<Video>{
 	private Integer vid;
 	private	LoginInf inf;
 	private List<Integer> deleVideo;
+//speaker模糊查询	
+	private String speaker_name;
+	private String speaker_job;
+//addSpeaker
+	//private Speaker s=new 
 
 	
 
 
+	public String getSpeaker_name() {
+		return speaker_name;
+	}
+	public void setSpeaker_name(String speaker_name) {
+		this.speaker_name = speaker_name;
+	}
+	public String getSpeaker_job() {
+		return speaker_job;
+	}
+	public void setSpeaker_job(String speaker_job) {
+		this.speaker_job = speaker_job;
+	}
 	public List<Integer> getDeleVideo() {
 	return deleVideo;
 }
@@ -140,12 +157,15 @@ public void setInf(LoginInf inf) {
 		return "success";
 		
 	}
-	//speaker分页
+	/*
+	 * speaker分页,模糊查询
+	 */
+	
 	public String speakerList(){
 	
 		int currentPage=(page==null?1:Integer.parseInt(page));
 		
-		Page page1=bs.loadPageppp(currentPage);
+		Page page1=bs.loadPageppp(currentPage,speaker_name, speaker_job);
 			
 		ServletActionContext.getRequest().setAttribute("page", page1);
 
@@ -204,6 +224,12 @@ public void setInf(LoginInf inf) {
 		System.out.println(deleVideo);
 		bs.deleAVideo(deleVideo);
 		return "success";
+	}
+	/*
+	 * addSpeaker页面
+	 */
+	public String addSpeakerYM(){
+			return "success";
 	}
 	
 }

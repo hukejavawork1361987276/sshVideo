@@ -71,10 +71,10 @@ public class FrontShareCAction {
 		System.out.println(cid);
 		//查询所在课程videolist
 		List<Course>  course=fs.findCVList(cid);
-		for (Course course2 : course) {
+		for (Course course2 : course) {	
 			session.setAttribute("course1", course2);
 		}
-//add播放次数
+		//add播放次数
 		fs.addCount(videoId);
 		return "success";
 		

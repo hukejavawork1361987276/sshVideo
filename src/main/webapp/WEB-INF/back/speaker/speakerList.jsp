@@ -48,10 +48,10 @@
 
 <div>
   		
- <a href='<c:url value="/vedio/addSpeakerYM.action"></c:url>'><button type="button" class="btn btn-primary">添加主讲人</button></a>
+ <a href='<c:url value="/back/admin/addSpeakerYM"></c:url>'><button type="button" class="btn btn-primary">添加主讲人</button></a>
 
 <div class="search">
-<form action='<c:url value="/vedio/speakerList.action"></c:url>'>
+<form action='<c:url value="/back/admin/speakerList"></c:url>'>
 <b>名字:</b><input type="text" value="${speaker_name}" name="speaker_name" class="form-control" id="exampleInputName2" placeholder="主讲人姓名" style="width: 200px; display: inline;">
 <b>职位:</b><input type="text" value="${speaker_job}" name="speaker_job" class="form-control" id="exampleInputName2" placeholder="主讲人职位" style="width: 200px; display: inline;">
  <button type="submit" class="btn btn-primary">搜索</button>
@@ -94,7 +94,7 @@
 		
 
 
- <fy:page url="${pageContext.request.contextPath}/vedio/speakerList.action"></fy:page>	
+ <fy:page url="${pageContext.request.contextPath}/back/admin/speakerList"></fy:page>	
 	</body>
 </html>
 

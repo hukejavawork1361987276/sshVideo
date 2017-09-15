@@ -18,7 +18,7 @@ public interface BackDao {
 
 	Page loadPage(String titlelike, String speakid, String courseid, int currentPage);
 
-	Page loadPageppp(int currentPage);
+	Page loadPageppp(int currentPage, String speaker_name,String speaker_job);
 
 	Page loadPageVppp(String titlelike, String speakid, String courseid, int currentPage);
 

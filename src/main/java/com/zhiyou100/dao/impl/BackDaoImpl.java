@@ -108,21 +108,44 @@ public class BackDaoImpl extends HibernateDaoSupport implements BackDao{
 	}
 //Speaker列表
 	@Override
-	public Page loadPageppp(int currentPage) {
+	public Page loadPageppp(int currentPage, String speaker_name,String speaker_job) {
+
 		//page对象
 		Page<Speaker> page=new Page<>();
 		//放入当前页
 		page.setPage(currentPage);
 		//查询共多少条
-		String hql="select count(1) from Speaker";
+		StringBuffer sql2= new StringBuffer();
+		String hql="select count(1) from Speaker where 1=1";
+		sql2.append(hql);
+		 if (speaker_name !=null && !("").equals(speaker_name)) {
+		
+			 sql2.append("and  speaker_name like '%"+speaker_name+"%'");
+		}
+		 if (speaker_job !=null && !("").equals(speaker_job)) {
+	
+			 sql2.append("and speaker_job like '%"+speaker_job+"%'");
+		}
+		 
 		 Session session = getHibernateTemplate().getSessionFactory().getCurrentSession();
-		Number n=(Number) session.createQuery(hql).uniqueResult();
+		Number n=(Number) session.createQuery(sql2.toString()).uniqueResult();
 		 page.setTotal(n.intValue());
 		 //规定分页一次十条
 			page.setSize(10);
 			//从当前页的条数查询十条
+			StringBuffer sql3= new StringBuffer();
+			String hql1="from Speaker where 1=1";
+			sql3.append(hql1);
+			 if (speaker_name !=null && !("").equals(speaker_name)) {
+				
+				 sql3.append("and   speaker_name like '%"+speaker_name+"%'");
+			}
+			 if (speaker_job !=null && !("").equals(speaker_job)) {
+				
+				 sql3.append("and  speaker_job like '%"+speaker_job+"%'");
+			}
 			int	currentPage1 =(currentPage-1)*10;
-		List<Speaker> li=	 session.createQuery("from Speaker").setFirstResult(currentPage1).setMaxResults(10).list();
+		List<Speaker> li=	 session.createQuery(sql3.toString()).setFirstResult(currentPage1).setMaxResults(10).list();
 		//将查到的十条放入page对象
 		page.setRows(li);
 		
