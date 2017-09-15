@@ -11,7 +11,7 @@
     			<generator class="native"></generator>
     		</id>
     		<property name="subject_name"></property>
-    <set name="setCourse">
+    <set name="setCourse" inverse="true">
     <key column="subject_id"></key>
     <one-to-many class="Course"/>
     </set>

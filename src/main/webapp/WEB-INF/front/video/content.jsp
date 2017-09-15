@@ -12,26 +12,28 @@
 	<div class="container">
 		<div class="v-intro">
 			<div class="left">
-				<video id="videoPlayer" src="${video.video_url}" class="video-js vjs-default-skin" controls width="627" height="280"
-					   poster="${video.video_image_url}" data-setup="{}">
+				<video id="videoPlayer" src="${video1.video_url}" class="video-js vjs-default-skin" controls width="627" height="280"
+					   poster="${video1.video_image_url}" data-setup="{}">
 				</video>
 			</div>
 
 			<div class="right">
-				<p class="right-title">${video.video_title}</p>
+				<p class="right-title">${video1.video_title}</p>
 				<div class="avatar">
-					<span style="background-image: url(${speaker.speaker_head_url})"></span>
-					<p><b>讲师：${speaker.speaker_name}</b><br><i>${speaker.speaker_descr}</i></p>
+					<span style="background-image: url(${video1.speaker.speaker_head_url})"></span>
+					<p><b>讲师：${video1.speaker.speaker_name}</b><br><i>${video1.speaker.speaker_descr}</i></p>
 				</div>
 				<p class="video-intro">
-					<span>本节内容：</span> ${video.video_descr}
+					<span>本节内容：</span> ${video1.video_descr}
 				</p>
 			</div>
 		</div>
 
+
+
 		<div class="kcjs">
 			<p class="title">课程介绍</p>
-			<p class="content">${course.course_descr}</p>
+			<p class="content">${video1.course.course_descr}</p>
 		</div>
 
 	</div>
@@ -41,7 +43,7 @@
 	<div class="container">
 		<p class="title">目录</p>
 
-		<c:forEach items="${videoList}" var="video" >
+		<c:forEach items="${course.setVideo}" var="video" >
 			<div class="chapter">
 				<p class="biaoti"><a href="${pageContext.request.contextPath}/front/video/index.action?videoId=${video.id}&subjectId=${subjectId}">${video.video_title}</a></p>
 				<p class="lecturer">${video.video_descr}</p>

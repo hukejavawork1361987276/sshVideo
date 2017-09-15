@@ -20,8 +20,9 @@
     		<property name="insert_time" ></property>
     		<property name="update_time" ></property>
     		
-
-    
+   <many-to-one name="subject" class="Subject" column="subject_id" cascade="save-update" >
+    </many-to-one>
+    		
   <set name="setVideo" inverse="true">
     <key column="course_id"></key>
     <one-to-many class="Video"/>

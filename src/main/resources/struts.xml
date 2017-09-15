@@ -14,9 +14,17 @@
 
 <!-- front package -->
 <package name="front" namespace="/front/user" extends="struts-default">
+	<!--共享subject课程  -->
 	<action name="courseIndex" class="ShareAction" method="courseIndex">
 	<result name="success">
 	/WEB-INF/front/course/index.jsp
+	</result>
+	</action>
+	
+	<!--共享course课程  -->
+	<action name="courseIndex2" class="ShareAction" method="courseIndex2">
+	<result name="success">
+	/WEB-INF/front/video/content.jsp
 	</result>
 	</action>
 

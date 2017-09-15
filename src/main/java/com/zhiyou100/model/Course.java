@@ -11,7 +11,7 @@ public class Course {
 
 	 private	 int id;
 	 //∂‡∂‘“ªsubject
-	 private	 Subject subject_id;
+	 private	 Subject subject;
 	 private 	String course_name ;
 	 private	 String course_descr;
 	 private	 Date insert_time;
@@ -26,11 +26,12 @@ public class Course {
 		this.id = id;
 	}
 
-	public Subject getSubject_id() {
-		return subject_id;
+	
+	public Subject getSubject() {
+		return subject;
 	}
-	public void setSubject_id(Subject subject_id) {
-		this.subject_id = subject_id;
+	public void setSubject(Subject subject) {
+		this.subject = subject;
 	}
 	public String getCourse_name() {
 		return course_name;
@@ -62,12 +63,9 @@ public class Course {
 	public void setSetVideo(Set<Video> setVideo) {
 		this.setVideo = setVideo;
 	}
-	@Override
-	public String toString() {
-		return "Course [id=" + id + ", subject_id=" + subject_id + ", course_name=" + course_name + ", course_descr="
-				+ course_descr + ", insert_time=" + insert_time + ", update_time=" + update_time + ", setVideo="
-				+ setVideo + "]";
-	}
+	
+	
+	
 	
 	 
 	

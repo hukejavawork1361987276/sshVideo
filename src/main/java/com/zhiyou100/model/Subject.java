@@ -29,7 +29,7 @@ public class Subject {
 	}
 	@Override
 	public String toString() {
-		return "Subject [id=" + id + ", subject_name=" + subject_name + ", setCourse=" + setCourse + "]";
+		return "Subject [id=" + id + ", subject_name=" + subject_name + "]";
 	}
 	
 	
