@@ -3,10 +3,14 @@
                  <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
   <jsp:include page="/WEB-INF/back/menu.jsp">
    <jsp:param value="speaker" name="fromJsp"/>  </jsp:include>              
-  <%@taglib prefix="fy" uri="http://zhiyou100.com/common/"%>  
+  <%@taglib prefix="fy" uri="http://zhiyou100.com/common/"%> 
+     <%String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%> 
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
+    <base href="<%=basePath%>">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,7 +19,8 @@
    <link href='<c:url value="/css/bootstrap.min.css"></c:url>' rel="stylesheet">
     <script src='<c:url value="/js/jquery-1.12.4.min.js"></c:url>'></script>
     <script src='<c:url value="/js/bootstrap.min.js"></c:url>'></script>
-   
+    <link rel="stylesheet" href="css/jquery-confirm.min.css" />
+      <script type="text/javascript" src="js/jquery-confirm.min.js" ></script>
    <style>
    	   	body{ 
    	   		margin:0 auto;
@@ -34,6 +39,30 @@
 	float: right;
 }
    </style>
+   
+      
+   <script type="text/javascript">
+   function  deleOne(id){
+		$.confirm({
+		    title: '警告',
+		    content: '确认删除一个?',
+		    type: 'green',
+		    buttons: {   
+		        ok: {
+		            text: "确认",
+		            btnClass: 'btn-primary',
+		            action: function () {
+		            	location.href='back/admin/deleOneS?sid='+id;
+		        	}
+		        },
+		        cancel: function(){
+		        	 text: "取消", 
+		        	 btnClass: 'btn-primary'
+		        }
+		    }
+		});
+   } </script>
+   
    
   </head>
   	<body>
@@ -85,8 +114,8 @@
 	<td>${speakers.speaker_name}</td>
 	<td>${speakers.speaker_job}</td>
 	<td>${speakers.speaker_descr}</td>
-	<td><a href='<c:url value="/vedio/editSpeaker.action"></c:url>?id=${speakers.id}'><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>
-	<td><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></td>
+	<td><a href='<c:url value="/back/admin/editSpeakerP"></c:url>?sid=${speakers.id}'><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>
+	<td><a><span class="glyphicon glyphicon-trash" aria-hidden="true" onclick="deleOne(${speakers.id})"></span></a></td>
 </tr>
 </c:forEach>
 </tbody>

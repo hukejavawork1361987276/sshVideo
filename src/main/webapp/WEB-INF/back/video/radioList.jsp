@@ -18,11 +18,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>Hello World</title>
+    
     <link href='<c:url value="css/bootstrap.min.css"></c:url>' rel="stylesheet">
     <script src='<c:url value="js/jquery-1.12.4.min.js"></c:url>'></script>
     <script src='<c:url value="js/bootstrap.min.js"></c:url>'></script>
     <link rel="stylesheet" href="css/jquery-confirm.min.css" />
       <script type="text/javascript" src="js/jquery-confirm.min.js" ></script>
+      <!--  -->
    <style>
 
    	   	body{ 

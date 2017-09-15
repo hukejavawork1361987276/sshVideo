@@ -36,20 +36,23 @@
   </div>
 </div>
 
-<form action='<c:url value="/back/admin/addSpeaker"></c:url>' method="post">
-<b style="font-size:large;float: left;">名字:</b><input name="s.speaker_name" type="text" class="form-control" id="exampleInputEmail1" placeholder="视频标题" style="width: 1000px;display: inline;float: right;"><br /><br />
-<b style="font-size:large;float: left;">职业:</b><input name="s.speaker_job" type="text" class="form-control" id="exampleInputEmail1" placeholder="主讲人"style="width: 1000px;display: inline;float: right;"><br /><br />
-<b style="font-size:large;float: left;">头像图片:</b><input type="text" name="s.speaker_head_url" class="form-control" id="exampleInputEmail1" placeholder="所属课程"style="width: 1000px;display: inline;float: right;"><br /><br />
+<form action="${pageContext.request.contextPath}/back/admin/editSpeakerSub" method="post">
+<input type="hidden" name="s.id" value="${speaker.id}">
+
+<b style="font-size:large;float: left;">名字:</b><input value="${speaker.speaker_name}" name="s.speaker_name" type="text" class="form-control" id="exampleInputEmail1" placeholder="视频标题" style="width: 1000px;display: inline;float: right;"><br /><br />
+<b style="font-size:large;float: left;">职业:</b><input value="${speaker.speaker_job}" name="s.speaker_job" type="text" class="form-control" id="exampleInputEmail1" placeholder="主讲人"style="width: 1000px;display: inline;float: right;"><br /><br />
+<b style="font-size:large;float: left;">头像图片:</b><input value="${speaker.speaker_head_url}" type="text" name="s.speaker_head_url" class="form-control" id="exampleInputEmail1" placeholder="所属课程"style="width: 1000px;display: inline;float: right;"><br /><br />
 <b style="font-size:large; float: left;">简介:</b><br />
 
-<textarea name="s.speaker_descr" cols="140" rows="5" style="float: right;"></textarea><br />
+<textarea name="s.speaker_descr" cols="140" rows="5" style="float: right;">${speaker.speaker_descr}</textarea><br />
 <br /><br />
 <div class="submit">
 	
 <button type="submit" class="btn btn-primary">保存</button>
 
  <a class="btn btn-default" href="javascript:history.go(-1)">返回</a>
-</div></form>
+</div>
+</form>
 	</body>
 </html>
 

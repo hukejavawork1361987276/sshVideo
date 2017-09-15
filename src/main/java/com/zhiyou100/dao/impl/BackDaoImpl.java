@@ -1,5 +1,6 @@
 package com.zhiyou100.dao.impl;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -233,18 +234,7 @@ public class BackDaoImpl extends HibernateDaoSupport implements BackDao{
 	}
 
 	@Override
-	public int deleVideo(Integer vid) {
-		/* Session session = getHibernateTemplate().getSessionFactory().getCurrentSession();
-		 Query query = session.createQuery("from Video where id=?");
-		query.setParameter(0, vid);
-		Video video=(Video) query.uniqueResult();
-		System.out.println(video);
-		
-		getHibernateTemplate().delete(video);
-		
-		System.out.println(11);
-		*/
-		
+	public int deleVideo(Integer vid) {	
 		Video video=(Video)this.getHibernateTemplate().get(Video.class,vid);
 		System.out.println(video);
         getHibernateTemplate().delete(video);
@@ -262,5 +252,44 @@ public class BackDaoImpl extends HibernateDaoSupport implements BackDao{
 		}
 		
 		getHibernateTemplate().deleteAll(list);
+	}
+/*
+ *addSpeaker
+ */
+	@Override
+	public void addSpeaker(Speaker s) {
+		getHibernateTemplate().save(s);
+		
+	}
+/*
+ * findOneSpeaker(edit)
+ */
+	@Override
+	public List<Speaker> findOneSpeaker(int sid) {
+		List<Speaker> find = (List<Speaker>) getHibernateTemplate().find("from Speaker where id=?", sid);
+		return find;
+	}
+
+	@Override
+	public void editSpeaker(Speaker s) {
+		Speaker speaker = getHibernateTemplate().get(Speaker.class, s.getId());
+		speaker.setSpeaker_descr(s.getSpeaker_descr());
+		speaker.setSpeaker_head_url(s.getSpeaker_head_url());
+		speaker.setSpeaker_job(s.getSpeaker_job());
+		speaker.setSpeaker_name(s.getSpeaker_name());
+
+		speaker.setUpdate_time(new Date(System.currentTimeMillis()));
+		
+		getHibernateTemplate().update(speaker);
+		
+
+	}
+/*
+ * É¾³ýone speaker
+ */
+	@Override
+	public void deleOneSpeaker(int sid) {
+		Speaker speaker = getHibernateTemplate().get(Speaker.class, sid);
+		getHibernateTemplate().delete(speaker);
 	}
 }

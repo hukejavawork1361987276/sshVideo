@@ -84,4 +84,27 @@ public class BackServiceImpl implements BackService{
 		
 	}
 
+	@Override
+	public void addSpeaker(Speaker s) {
+		bd.addSpeaker(s);
+	}
+
+	@Override
+	public List<Speaker> findOneSpeaker(int sid) {
+		
+		return bd.findOneSpeaker(sid);
+	}
+
+	@Override
+	public void editSpeaker(Speaker s) {
+		bd.editSpeaker(s);
+		
+	}
+
+	@Override
+	public void deleOneSpeaker(int sid) {
+		bd.deleOneSpeaker(sid);
+		
+	}
+
 }

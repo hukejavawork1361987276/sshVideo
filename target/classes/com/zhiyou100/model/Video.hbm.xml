@@ -3,17 +3,7 @@
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-     <!-- | id               | int(11)      | NO   | PRI | NULL    | auto_increment |
-| video_title      | varchar(255) | YES  |     | NULL    |                |
-| speaker_id       | int(11)      | YES  |     | NULL    |                |
-| course_id        | int(11)      | YES  |     | NULL    |                |
-| video_length     | int(11)      | YES  |     | NULL    |                |
-| video_image_url  | varchar(255) | YES  |     | NULL    |                |
-| video_url        | varchar(255) | YES  |     | NULL    |                |
-| video_descr      | varchar(255) | YES  |     | NULL    |                |
-| insert_time      | datetime     | YES  |     | NULL    |                |
-| update_time      | datetime     | YES  |     | NULL    |                |
-| video_play_times -->
+    
     <hibernate-mapping package="com.zhiyou100.model">
     
     	<class name="Video" table="video">

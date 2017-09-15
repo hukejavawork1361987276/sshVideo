@@ -32,4 +32,12 @@ public interface BackService {
 
 	void deleAVideo(List<Integer> deleVideo);
 
+	void addSpeaker(Speaker s);
+
+	List<Speaker> findOneSpeaker(int sid);
+
+	void editSpeaker(Speaker s);
+
+	void deleOneSpeaker(int sid);
+
 }

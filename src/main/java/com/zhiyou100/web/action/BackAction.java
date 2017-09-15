@@ -2,6 +2,8 @@ package com.zhiyou100.web.action;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,11 +41,27 @@ public class BackAction implements ModelDriven<Video>{
 	private String speaker_name;
 	private String speaker_job;
 //addSpeaker
-	//private Speaker s=new 
+	private Speaker s=new Speaker();
+//更改Speaker sid
+	private int sid;
+	
+	
 
 	
 
 
+	public int getSid() {
+		return sid;
+	}
+	public void setSid(int sid) {
+		this.sid = sid;
+	}
+	public Speaker getS() {
+		return s;
+	}
+	public void setS(Speaker s) {
+		this.s = s;
+	}
 	public String getSpeaker_name() {
 		return speaker_name;
 	}
@@ -229,7 +247,50 @@ public void setInf(LoginInf inf) {
 	 * addSpeaker页面
 	 */
 	public String addSpeakerYM(){
-			return "success";
+		
+		return "success";
 	}
-	
+	/*
+	 * addSpeaker提交
+	 */
+	public String addSpeaker(){
+		bs.addSpeaker(s);
+		return "success";
+	}
+	/*
+	 * editSpeaker页面
+	 */
+	public String editSpeakerP(){
+		 ActionContext context = ServletActionContext.getContext();
+		List<Speaker>	li= 	bs.findOneSpeaker(sid);
+		for (Speaker speaker : li) {
+			context.put("speaker", speaker);
+		}
+		return "success";
+	}
+	/*
+	 * editSpeaker页面提交
+	 */
+	public String editSpeakerSub(){
+
+		bs.editSpeaker(s);
+		return "success";
+	}
+
+	/*
+	 * dele one Speaker
+	 */
+	public String 	deleOneS(){
+
+		bs.deleOneSpeaker(sid);
+		return "success";
+	}
+	/*
+	 * courseListPage
+	 */
+	public String 	courseList(){
+
+		
+		return "success";
+	}
 }

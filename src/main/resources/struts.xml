@@ -151,6 +151,38 @@
 <action name="addSpeakerYM" class="BackAction" method="addSpeakerYM">
 <result name="success">/WEB-INF/back/speaker/addSpeakerP.jsp</result>
 </action>
+<!-- addSpeaker -->
+<action name="addSpeaker" class="BackAction" method="addSpeaker">
+<result name="success" type="chain">
+	<param name="/back/admin"></param>
+	<param name="actionName">speakerList</param>
+</result>
+</action>
+<!--dele one Speaker-->
+<action name="deleOneS" class="BackAction" method="deleOneS">
+<result name="success" type="chain">
+	<param name="/back/admin"></param>
+	<param name="actionName">speakerList</param>
+</result>
+</action>
+<!-- courseList-->
+<action name="courseList" class="BackAction" method="courseList">
+<result name="success">
+/WEB-INF/back/course/courseList.jsp
+</result>
+</action>
+<!-- editSpeaker页面 -->
+<action name="editSpeakerP" class="BackAction" method="editSpeakerP">
+<result name="success">/WEB-INF/back/speaker/editSpeakerP.jsp</result>
+</action>
+<!-- editSpeaker提交页面 -->
+<action name="editSpeakerSub" class="BackAction" method="editSpeakerSub">
+<result name="success" type="chain">
+	<param name="/back/admin"></param>
+	<param name="actionName">speakerList</param>
+</result>
+</action>
+
 <action name="loginYM" class="BackAction" method="loginYM">
 <result name="success">/WEB-INF/back/login.jsp</result>
 </action>
