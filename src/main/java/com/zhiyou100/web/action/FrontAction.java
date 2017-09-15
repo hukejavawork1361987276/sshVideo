@@ -302,7 +302,8 @@ public class FrontAction {
 		}
 		//更新密码提交
 		public String passwordSub(){
-			List<User> li=	us.findOldPassword(email,oldPassword);
+			String pwd = DigestUtils.md5Hex(oldPassword);
+			List<User> li=	us.findOldPassword(email,pwd);
 			if (li.size()==1) {
 			us.updatePwd(email, newPassword);
 			}

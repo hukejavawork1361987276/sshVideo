@@ -46,9 +46,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	var subjectId = $('#subjectId').val();
         	
            //$('#content').load('front/video/videoDataTitle.action?videoId='+id+'&sid='+sid);
-           $('#content').load('front/video/videoDataTitle.action?videoId='+id+'&subjectId='+subjectId);
+           $('#content').load('front/user/courseIndex2?videoId='+id+'&subjectId='+subjectId);
            //播放量统计,不需要返回结果处理
-           $.get('front/video/state.action?videoId='+id+'&subjectId='+subjectId);
+           $.get('front/user/addVideoCount?videoId='+id+'&subjectId='+subjectId);
 		});
     </script>
 </body>

@@ -63,6 +63,11 @@ public class Course {
 	public void setSetVideo(Set<Video> setVideo) {
 		this.setVideo = setVideo;
 	}
+	@Override
+	public String toString() {
+		return "Course [id=" + id + ", subject=" + subject + ", course_name=" + course_name + ", course_descr="
+				+ course_descr + ", insert_time=" + insert_time + ", update_time=" + update_time + "]";
+	}
 	
 	
 	

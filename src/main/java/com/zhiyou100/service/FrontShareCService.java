@@ -16,4 +16,6 @@ public interface FrontShareCService {
 
 	List<Course> findCVList(int cid);
 
+	void addCount(int videoId);
+
 }

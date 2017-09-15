@@ -16,6 +16,8 @@ public interface FrontShareCDao {
 
 	List<Course> findCVList(int cid);
 
+	void addCount(int videoId);
+
 	
 
 }

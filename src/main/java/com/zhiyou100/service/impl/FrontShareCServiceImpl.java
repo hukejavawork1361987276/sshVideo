@@ -47,4 +47,12 @@ public  class FrontShareCServiceImpl implements FrontShareCService{
 		// TODO Auto-generated method stub
 		return bd.findCVList(cid);
 	}
+
+
+
+	@Override
+	public void addCount(int videoId) {
+		bd.addCount(videoId);
+		
+	}
 }

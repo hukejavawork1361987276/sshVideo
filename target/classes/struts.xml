@@ -20,6 +20,11 @@
 	/WEB-INF/front/course/index.jsp
 	</result>
 	</action>
+	<action name="videoPage" class="ShareAction" method="videoPage">
+	<result name="success">
+	/WEB-INF/front/video/index.jsp
+	</result>
+	</action>
 	
 	<!--共享course课程  -->
 	<action name="courseIndex2" class="ShareAction" method="courseIndex2">
@@ -27,6 +32,7 @@
 	/WEB-INF/front/video/content.jsp
 	</result>
 	</action>
+
 
 	<!--前台页面  -->
 	<action name="index1" class="FrontAction" method="index1">

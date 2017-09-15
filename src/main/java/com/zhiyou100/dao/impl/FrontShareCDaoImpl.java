@@ -42,11 +42,17 @@ for (Video video : li) {
 	public List<Course> findCVList(int cid) {
 		System.out.println("//查询选中video对应course的videos");
 		List<Course> li=	(List<Course>) getHibernateTemplate().find("from Course where id=?", cid);
-for (Course course : li) {
-	System.out.println(course);
-}
-		
+	
 		return li;
+	}
+/*
+ * 添加播放次数
+ */
+	@Override
+	public void addCount(int videoId) {
+		Video video = getHibernateTemplate().get(Video.class, videoId);
+		video.setVideo_play_times(video.getVideo_play_times()+1);
+		 getHibernateTemplate().save(video);
 	}
 
 }

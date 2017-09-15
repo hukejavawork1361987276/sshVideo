@@ -68,9 +68,19 @@ public class FrontShareCAction {
 		session.setAttribute("video1", video);
 		cid=video.getCourse_id().getId();
 		}
+		System.out.println(cid);
 		//查询所在课程videolist
 		List<Course>  course=fs.findCVList(cid);
-		session.setAttribute("course", course);
+		for (Course course2 : course) {
+			session.setAttribute("course1", course2);
+		}
+//add播放次数
+		fs.addCount(videoId);
+		return "success";
+		
+	}
+	//course:index.jsp-- ONCLOCK videoID --load:video:index.jsp
+	public String videoPage(){
 		return "success";
 	}
 }

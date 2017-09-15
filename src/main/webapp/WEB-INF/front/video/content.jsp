@@ -33,7 +33,7 @@
 
 		<div class="kcjs">
 			<p class="title">课程介绍</p>
-			<p class="content">${video1.course.course_descr}</p>
+			<p class="content">${video1.course_id.course_descr}</p>
 		</div>
 
 	</div>
@@ -43,14 +43,14 @@
 	<div class="container">
 		<p class="title">目录</p>
 
-		<c:forEach items="${course.setVideo}" var="video" >
+		<c:forEach items="${course1.setVideo}" var="video" >
 			<div class="chapter">
-				<p class="biaoti"><a href="${pageContext.request.contextPath}/front/video/index.action?videoId=${video.id}&subjectId=${subjectId}">${video.video_title}</a></p>
+				<p class="biaoti"><a href="${pageContext.request.contextPath}/front/user/videoPage?videoId=${video.id}&subjectId=${subjectId}">${video.video_title}</a></p>
 				<p class="lecturer">${video.video_descr}</p>
-				<p class="lecturer">讲师：${video.speaker_name}</p>
+				<p class="lecturer">讲师：${video.speaker.speaker_name}</p>
 				<div class="v-info">
 					<span class="count"><img src="static/img/count.png" alt="">${video.video_play_times}</span>
-					<span class="duration"><img src="static/img/player.png" alt="">${video.video_lengthStr}</span>
+					<span class="duration"><img src="static/img/player.png" alt="">${video.video_length}</span>
 				</div>
 			</div>
 		</c:forEach>
