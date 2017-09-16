@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import com.opensymphony.xwork2.ActionContext;
 import com.zhiyou100.model.Course;
 import com.zhiyou100.model.Page;
+import com.zhiyou100.model.TongJi;
 import com.zhiyou100.model.Video;
 import com.zhiyou100.service.BackCCService;
 
@@ -114,15 +115,13 @@ public class BackCCAction {
 	 * 
 	 */
 	public String Tongji(){
-		List<Video> v=	bsc.findbiao();
-		for (Video video : v) {
-			System.out.println(video);
-		}
+		List<TongJi> v=	bsc.findbiao();
+		
 		StringBuffer name=new StringBuffer();
 		StringBuffer data=new StringBuffer();
 		for (int i = 0; i < v.size(); i++) {
 
-			//name.append(v.get(i).getCourseName());
+			
 			name.append(v.get(i).getCourseName());
 			data.append(v.get(i).getAvgvideo_play_times());
 			if(i != v.size() -1 ){

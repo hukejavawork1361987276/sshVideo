@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 import com.zhiyou100.dao.BackCCDao;
 import com.zhiyou100.model.Course;
 import com.zhiyou100.model.Page;
+import com.zhiyou100.model.TongJi;
 import com.zhiyou100.model.Video;
 @Repository
 public class BackCCDaoImpl extends HibernateDaoSupport implements BackCCDao  {
@@ -83,14 +84,14 @@ public class BackCCDaoImpl extends HibernateDaoSupport implements BackCCDao  {
 		
 	}
 	@Override
-	public List<Video> findbiao() {
+	public List<TongJi> findbiao() {
 		Session session = getHibernateTemplate().getSessionFactory().getCurrentSession();
 		Query SQLQuery = session.createSQLQuery("select c.course_name courseName ,"
 				+ "avg(v.video_play_times) Avgvideo_play_times from "
 				+ "video v right join course c on v.course_id=c.id "
 				+ "group by"
-				+ " c.course_name ").setResultTransformer(Transformers.aliasToBean(Video.class));
-				List<Video> list = SQLQuery.list();
+				+ " c.course_name ").setResultTransformer(Transformers.aliasToBean(TongJi.class));
+				List<TongJi> list = SQLQuery.list();
 
 		return list;
 	}

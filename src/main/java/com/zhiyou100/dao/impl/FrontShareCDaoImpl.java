@@ -33,11 +33,7 @@ public class FrontShareCDaoImpl extends HibernateDaoSupport implements FrontShar
 //查询选中video
 	@Override
 	public List<Video> findVideo(int videoId) {
-		System.out.println("//查询选中video");
 		List<Video> li=	(List<Video>) getHibernateTemplate().find("from Video where id=?", videoId);
-for (Video video : li) {
-	System.out.println(video);
-}
 		return li;
 	}
 //查询选中video对应course的videos

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.zhiyou100.model.Course;
 import com.zhiyou100.model.Page;
+import com.zhiyou100.model.TongJi;
 import com.zhiyou100.model.Video;
 
 public interface BackCCDao {
@@ -20,6 +21,6 @@ public interface BackCCDao {
 
 	void deleCourse(int c);
 
-	List<Video> findbiao();
+	List<TongJi> findbiao();
 
 }

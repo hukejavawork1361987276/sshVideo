@@ -18,7 +18,7 @@
    <many-to-one name="subject" class="Subject" column="subject_id" cascade="save-update">
     </many-to-one>
     		
-  <set name="setVideo"  cascade="save-update" inverse="true">
+  <set name="setVideo"  cascade="save-update" >
     <key column="course_id"></key>
     <one-to-many class="Video"/>
     </set> 

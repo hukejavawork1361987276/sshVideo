@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.zhiyou100.dao.BackCCDao;
 import com.zhiyou100.model.Course;
 import com.zhiyou100.model.Page;
+import com.zhiyou100.model.TongJi;
 import com.zhiyou100.model.Video;
 import com.zhiyou100.service.BackCCService;
 
@@ -47,7 +48,7 @@ BackCCDao bc;
 	}
 
 	@Override
-	public List<Video> findbiao() {
+	public List<TongJi> findbiao() {
 		// TODO Auto-generated method stub
 		return bc.findbiao();
 	}

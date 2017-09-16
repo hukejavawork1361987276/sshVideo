@@ -25,15 +25,15 @@ public class Video {
 	private int video_length;
 	private String video_lengthStr;
 	
-	private String courseName;
+/*	private String courseName;
 	
-	private Number Avgvideo_play_times;
-	
-	
+	private Number Avgvideo_play_times;*/
 	
 	
 	
-	public Number getAvgvideo_play_times() {
+	
+	
+/*	public Number getAvgvideo_play_times() {
 		return Avgvideo_play_times;
 	}
 	public void setAvgvideo_play_times(Number avgvideo_play_times) {
@@ -44,7 +44,7 @@ public class Video {
 	}
 	public void setCourseName(String courseName) {
 		this.courseName = courseName;
-	}
+	}*/
 
 	public String getVideo_lengthStr() {
 		return video_lengthStr;
@@ -131,12 +131,12 @@ public class Video {
 	}
 	@Override
 	public String toString() {
-		return "Video [id=" + id + ", speaker=" + speaker + ", course_id=" + course_id + ", video_play_times="
-				+ video_play_times + ", video_title=" + video_title + ", video_image_url=" + video_image_url
-				+ ", video_url=" + video_url + ", video_descr=" + video_descr + ", insert_time=" + insert_time
-				+ ", update_time=" + update_time + ", video_length=" + video_length + ", video_lengthStr="
-				+ video_lengthStr + ", courseName=" + courseName + ", Avgvideo_play_times=" + Avgvideo_play_times + "]";
+		return "Video [id=" + id + ", video_play_times=" + video_play_times + ", video_title=" + video_title
+				+ ", video_image_url=" + video_image_url + ", video_url=" + video_url + ", video_descr=" + video_descr
+				+ ", insert_time=" + insert_time + ", update_time=" + update_time + ", video_length=" + video_length
+				+ ", video_lengthStr=" + video_lengthStr + "]";
 	}
+
 
 	
 	
