@@ -115,7 +115,9 @@ public class BackCCAction {
 	 */
 	public String Tongji(){
 		List<Video> v=	bsc.findbiao();
-		
+		for (Video video : v) {
+			System.out.println(video);
+		}
 		StringBuffer name=new StringBuffer();
 		StringBuffer data=new StringBuffer();
 		for (int i = 0; i < v.size(); i++) {

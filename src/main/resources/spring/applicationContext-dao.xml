@@ -57,6 +57,11 @@
 <bean class="com.zhiyou100.dao.impl.BackCCDaoImpl" >
 <property name="sessionFactory" ref="sessionFactory" ></property>
 </bean>
+ <bean class="com.zhiyou100.dao.impl.TestDaoImpl" >
+<property name="sessionFactory" ref="sessionFactory" ></property>
+</bean>
+
+
 
 
 

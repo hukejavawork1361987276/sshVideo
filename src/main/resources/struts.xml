@@ -267,6 +267,6 @@
 </action>
 </package>
 
-
+<include file="/struts/struts1.xml"></include>
 
 </struts>

@@ -23,7 +23,7 @@
     <many-to-one name="speaker" class="Speaker" column="speaker_id" cascade="save-update">
     </many-to-one>
     
-    <many-to-one name="course_id" class="Course" column="course_id" cascade="save-update" insert="true">
+    <many-to-one name="course_id" class="Course" column="course_id" cascade="save-update" >
     </many-to-one>
     		
     	</class>

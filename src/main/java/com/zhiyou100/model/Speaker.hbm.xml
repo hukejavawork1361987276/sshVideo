@@ -16,7 +16,7 @@
     		<property name="speaker_descr"></property>
     		<property name="insert_time"></property>
     		<property name="update_time"></property>
-    <set name="setVideo" >
+    <set name="setVideo" inverse="true"  cascade="save-update">
     <key column="speaker_id"></key>
     <one-to-many class="Video"/>
     </set> 

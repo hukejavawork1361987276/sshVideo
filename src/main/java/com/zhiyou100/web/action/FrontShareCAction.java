@@ -48,11 +48,13 @@ public class FrontShareCAction {
 		HttpSession session = ServletActionContext.getRequest().getSession();
 		List<Subject> lis= 	fs.findSub(subjectId);
 		for (Subject subject : lis) {
+System.out.println("subject----"+subject);
 			session.setAttribute("subject", subject);
 		}
 		List<Course> lic=	fs.findSCV(subjectId);	
+		
 		for (Course course : lic) {
-			System.out.println(course);
+System.out.println("course----"+course);
 		}
 		
 		session.setAttribute("courses", lic);

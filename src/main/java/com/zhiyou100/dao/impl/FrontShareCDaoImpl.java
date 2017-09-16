@@ -15,6 +15,9 @@ public class FrontShareCDaoImpl extends HibernateDaoSupport implements FrontShar
 	@Override
 	public List<Course> findSCV(int subjectId) {
 		List<Course> li=	(List<Course>) getHibernateTemplate().find("from Course where subject_id=?", subjectId);
+		for (Course course : li) {
+			System.out.println("course----000------:"+course);
+		}
 		return li;
 
 	}

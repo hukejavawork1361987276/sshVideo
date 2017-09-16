@@ -49,7 +49,7 @@
    
    
    <ul class="nav navbar-nav">
-            <li  ><a href="" > <b style="font-size: larger;">视频管理系统</b></a></li>
+            <li  ><a href='<c:url value="/front/user/index1"></c:url>' > <b style="font-size: larger;">视频管理系统</b></a></li>
             <li ${param.fromJsp=="video"?"class='active'":""}><a  href='<c:url value="/back/admin/videoList"></c:url>' target="pageBox">视频管理</a></li>
             <li ${param.fromJsp=="speaker"?"class='active'":""}><a  href='<c:url value="/back/admin/speakerList"></c:url>' target="pageBox">主讲人管理</a></li>
             <li ${param.fromJsp=="course"?"class='active'":""}><a  href='<c:url value="/back/admin/courseList"></c:url>' target="pageBox">课程管理</a></li>
