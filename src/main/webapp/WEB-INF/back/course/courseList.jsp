@@ -17,10 +17,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>Hello World</title>
-   <link href='<c:url value="/css/bootstrap.min.css"></c:url>' rel="stylesheet">
+    <link href='<c:url value="/css/bootstrap.min.css"></c:url>' rel="stylesheet">
     <script src='<c:url value="/js/jquery-1.12.4.min.js"></c:url>'></script>
     <script src='<c:url value="/js/bootstrap.min.js"></c:url>'></script>
-   
+    <link rel="stylesheet" href="css/jquery-confirm.min.css" />
+      <script type="text/javascript" src="js/jquery-confirm.min.js" ></script>
    <style>
   
    body{
@@ -29,6 +30,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	
    }
    </style>
+   <script type="text/javascript">
+   function  deleOne(id){
+		$.confirm({
+		    title: '警告',
+		    content: '确认删除一个?',
+		    type: 'green',
+		    buttons: {   
+		        ok: {
+		            text: "确认",
+		            btnClass: 'btn-primary',
+		            action: function () {
+		            	location.href='back/admin/deleOneC?cid='+id;
+		        	}
+		        },
+		        cancel: function(){
+		        	 text: "取消" 
+		        	 
+		        }
+		    }
+		});}
+   </script>
+   
    
   </head>
   	<body>
@@ -40,7 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
   	<div>
   		
-  			<button type="button" class="btn btn-primary">添加课程</button>
+  			<a href="${pageContext.request.contextPath}/back/admin/addCourseP"><button type="button" class="btn btn-primary">添加课程</button></a>
   		
   	</div>
   	
@@ -62,15 +85,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tr>
 	<td>${inco.count+10*(page.page-1)}</td>
 	<td>${courseList.course_name}</td>
-	<td>${courseList.subject_name}</td>
+	<td>${courseList.subject.subject_name}</td>
 	<td>${courseList.course_descr}</td>
-	<td><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></td>
-	<td><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></td>
+	<td><a href="${pageContext.request.contextPath}/back/admin/editCourseP?cid=${courseList.id}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>
+	<td><a><span class="glyphicon glyphicon-trash" aria-hidden="true" onclick="deleOne(${courseList.id})"></span></a></td>
 </tr>
 </c:forEach>
 </tbody>
 		</table>
-		<fy:page url="${pageContext.request.contextPath}/vedio/videoList.action"></fy:page>
+		<fy:page url="${pageContext.request.contextPath}/back/admin/courseList"></fy:page>
   
   	
   		

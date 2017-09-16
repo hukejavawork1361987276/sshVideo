@@ -165,10 +165,43 @@
 	<param name="actionName">speakerList</param>
 </result>
 </action>
-<!-- courseList-->
-<action name="courseList" class="BackAction" method="courseList">
+<!-- courseList class= BackCCAction-->
+<action name="courseList" class="BackCCAction" method="courseList">
 <result name="success">
 /WEB-INF/back/course/courseList.jsp
+</result>
+</action>
+<!-- 添加coursePage -->
+<action name="addCourseP" class="BackCCAction" method="addCourseP">
+<result name="success">
+/WEB-INF/back/course/addCourse.jsp
+</result>
+</action>
+<!-- 添加course提交 -->
+<action name="addCourseSub" class="BackCCAction" method="addCourseSub">
+<result name="success" type="chain">
+	<param name="/back/admin"></param>
+	<param name="actionName">courseList</param>
+</result>
+</action>
+<!-- 更新coursePage -->
+<action name="editCourseP" class="BackCCAction" method="editCourseP">
+<result name="success">
+/WEB-INF/back/course/editCourse.jsp
+</result>
+</action>
+<!-- 更新course提交-->
+<action name="editCourseSub" class="BackCCAction" method="editCourseSub">
+<result name="success" type="chain">
+	<param name="/back/admin"></param>
+	<param name="actionName">courseList</param>
+</result>
+</action>
+<!-- 更新course提交-->
+<action name="deleOneC" class="BackCCAction" method="deleOneC">
+<result name="success" type="chain">
+	<param name="/back/admin"></param>
+	<param name="actionName">courseList</param>
 </result>
 </action>
 <!-- editSpeaker页面 -->
@@ -181,6 +214,10 @@
 	<param name="/back/admin"></param>
 	<param name="actionName">speakerList</param>
 </result>
+</action>
+<!-- 统计页面 -->
+<action name="Tongji" class="BackCCAction" method="Tongji">
+<result name="success">/WEB-INF/back/tongji/tongji.jsp</result>
 </action>
 
 <action name="loginYM" class="BackAction" method="loginYM">
@@ -204,6 +241,7 @@
 <action name="addVideo" class="BackAction" method="addVideo">
 <result name="success">/WEB-INF/back/video/addRadio.jsp</result>
 </action>
+<!--  -->
 <action name="addVideoSub" class="BackAction" method="addVideoSub">
 <result  type="chain">
 <param name="namespace">/back/admin</param>

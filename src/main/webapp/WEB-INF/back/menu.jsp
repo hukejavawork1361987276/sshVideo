@@ -53,7 +53,7 @@
             <li ${param.fromJsp=="video"?"class='active'":""}><a  href='<c:url value="/back/admin/videoList"></c:url>' target="pageBox">视频管理</a></li>
             <li ${param.fromJsp=="speaker"?"class='active'":""}><a  href='<c:url value="/back/admin/speakerList"></c:url>' target="pageBox">主讲人管理</a></li>
             <li ${param.fromJsp=="course"?"class='active'":""}><a  href='<c:url value="/back/admin/courseList"></c:url>' target="pageBox">课程管理</a></li>
-            <li ${param.fromJsp=="statistics"?"class='active'":""}><a  href='<c:url value="/vedio/tongji.action"></c:url>'>统计分析</a></li>
+            <li ${param.fromJsp=="statistics"?"class='active'":""}><a  href='<c:url value="/back/admin/Tongji"></c:url>'>统计分析</a></li>
      </ul>
      
      <div style="float: right;">

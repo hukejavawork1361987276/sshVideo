@@ -2,12 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC 
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-   <!-- id           | int(11)      | NO   | PRI | NULL    | auto_increment |
-| course_name  | varchar(50)  | YES  |     | NULL    |                |
-| course_descr | varchar(255) | YES  |     | NULL    |                |
-| insert_time  | datetime     | YES  |     | NULL    |                |
-| update_time  | datetime     | YES  |     | NULL    |                |
-| subject_id -->
+
      
     <hibernate-mapping package="com.zhiyou100.model">
     
@@ -20,10 +15,10 @@
     		<property name="insert_time" ></property>
     		<property name="update_time" ></property>
     		
-   <many-to-one name="subject" class="Subject" column="subject_id" cascade="save-update" >
+   <many-to-one name="subject" class="Subject" column="subject_id" cascade="save-update">
     </many-to-one>
     		
-  <set name="setVideo" inverse="true">
+  <set name="setVideo" inverse="false" cascade="save-update" >
     <key column="course_id"></key>
     <one-to-many class="Video"/>
     </set> 

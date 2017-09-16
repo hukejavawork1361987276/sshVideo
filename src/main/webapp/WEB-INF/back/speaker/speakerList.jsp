@@ -56,8 +56,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		        	}
 		        },
 		        cancel: function(){
-		        	 text: "取消", 
-		        	 btnClass: 'btn-primary'
+		        	 text: "取消" 
+		        	
 		        }
 		    }
 		});
