@@ -151,6 +151,11 @@ public void setInf(LoginInf inf) {
 		List<Admin> li=bs.login(name,password1);
 
 		if (li.size()==1) {
+			HttpSession session = ServletActionContext.getRequest().getSession();
+			for (Admin admin : li) {
+				session.setAttribute("userAdmin", admin);	
+			}
+			
 			return "success";
 		} else {
 			return "false";
